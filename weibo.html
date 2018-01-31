@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			border: 1px solid black;
+			width: 500px;
+			height: 300px;
+			margin: 0 auto;
+		}
+		#left{
+			font-size: 20px;
+			color: red;
+			float: left;
+			font-weight: 700;
+			padding: 20px 20px;
+		}
+		#right{
+			float: right;
+			font-size: 20px;
+			color: red;
+			font-weight: 700;
+			padding: 20px 20px;
+		}
+		#txt{
+			margin-left: 20px;
+		}
+		#btn{
+			float: right;
+			margin-right: 10px;
+			background-color: pink;
+			border: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		#btn1{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="left">请输入你的内容:</div>
+		<div id="right">微博</div>
+		<textarea id="txt" rows="5" cols="60" ></textarea>
+		<button type="button" id="btn">发布</button>
+		<div>
+			<ul id="ul"></ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var txt = document.getElementById('txt');
+		var btn = document.getElementById('btn');
+		var ul = document.getElementById('ul');
+		btn.onclick=function(){
+			var val = txt.value;
+			var li = document.createElement('li');
+			li.innerText=val;
+			li.innerHTML+="&nbsp;<button type='button'>删除</button>";
+			ul.appendChild(li);
+			txt.value='';
+			var btn1 = [li.lastElementChild];
+			for(var i = 0;i<btn1.length;i++){
+				btn1[i].onclick=function(){
+				ul.removeChild(this.parentNode);	
+				}
+			}
+	}
+	</script>
+</body>
+</html>
